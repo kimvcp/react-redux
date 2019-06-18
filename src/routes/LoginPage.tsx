@@ -2,11 +2,11 @@ import React from 'react';
 import LoginPanel from '../components/LoginPanel';
 import { connect } from 'react-redux';
 import { AppState } from '../store/configureStore';
-import { loggedIn } from '../store/system/actions';
+import { login } from '../store/system/actions';
 import { withRouter, RouteComponentProps } from 'react-router';
 
 interface DispatchToProps {
-  loggedIn: (userName: string) => void;
+  login: (userName: string) => void;
 }
 
 type LoginPageProps = DispatchToProps & RouteComponentProps;
@@ -20,7 +20,7 @@ const LoginPage: React.FC<LoginPageProps> = props => {
 
   const handleLogin = (username: string) => {
     //call login api
-    props.loggedIn(userName);
+    props.login(userName);
     props.history.push('/chat');
   };
 
@@ -37,7 +37,7 @@ const LoginPage: React.FC<LoginPageProps> = props => {
 
 const mapDispatchToProps = (dispatch: Function): DispatchToProps => {
   return {
-    loggedIn: (userName: string) => dispatch(loggedIn(userName))
+    login: (userName: string) => dispatch(login(userName))
   };
 };
 
