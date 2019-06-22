@@ -14,7 +14,7 @@ export function sendMessage(message: Message): SendMessageAction {
   };
 }
 
-export function clearMessages(): ClearMessageAction {
+export function clearMessage(): ClearMessageAction {
   return {
     type: CLEAR_MESSAGE
   };

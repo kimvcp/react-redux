@@ -9,7 +9,7 @@ export interface ChatState {
 }
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';
-export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE'
 
 export interface SendMessageAction {
   type: typeof SEND_MESSAGE;
@@ -17,7 +17,8 @@ export interface SendMessageAction {
 }
 
 export interface ClearMessageAction {
-    type: typeof CLEAR_MESSAGE;
+  type: typeof CLEAR_MESSAGE,
 }
+
 
 export type ChatActionTypes = SendMessageAction & ClearMessageAction;

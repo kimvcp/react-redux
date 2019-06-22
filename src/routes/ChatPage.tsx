@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../store/configureStore';
 import { ChatHistory, ChatInterface, Message } from '../components/Chat';
-import { sendMessage, clearMessages } from '../store/chat/action';
+import { sendMessage, clearMessage} from '../store/chat/action';
 
 interface StateToProps {
   userName: string;
@@ -10,9 +10,10 @@ interface StateToProps {
 }
 
 interface DispatchToProps {
-    sendMessage: (message: Message) => void
-    clearMessages: () => void
+    sendMessage: (message: Message) => void,
+    clearMessage: () => void
 }
+
 
 type ChatPageProps = StateToProps & DispatchToProps;
 
@@ -31,6 +32,10 @@ const ChatPage: React.FC<ChatPageProps> = props => {
       })
   }
 
+  const handleClearMessage = () => {
+    props.clearMessage()
+  }
+
   return (
     <div>
       <ChatHistory messages={props.messages} />
@@ -39,7 +44,7 @@ const ChatPage: React.FC<ChatPageProps> = props => {
         message={currentMessage}
         onMessageChange={handleMessageChange}
         onSendMessage={handleSendMessage}
-        onClearMessage={props.clearMessages}
+        onClearMessage={handleClearMessage}
       />
     </div>
   );
@@ -52,11 +57,11 @@ const mapStateToProps = (state: AppState): StateToProps => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Function): DispatchToProps =>{
-    return {
-        sendMessage: (message: Message) => dispatch(sendMessage(message)),
-        clearMessages: () => dispatch(clearMessages())
-    }
+const mapDispatchToProps = (dispatch: Function): DispatchToProps => {
+  return {
+    sendMessage: (message: Message) => dispatch(sendMessage(message)),
+    clearMessage: () => dispatch(clearMessage()),
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

@@ -13,7 +13,7 @@ const ChatInterface: React.SFC<ChatInterfaceProps> = ({
   message,
   onMessageChange,
   onSendMessage,
-  onClearMessage
+  onClearMessage,
 }) => {
   function keyPress(e: React.KeyboardEvent<any>) {
     if (e.key === 'Enter') {
@@ -36,7 +36,7 @@ const ChatInterface: React.SFC<ChatInterfaceProps> = ({
         placeholder='Type a message...'
       />
       <button onClick={send}>Send</button>
-      <button onClick={onClearMessage}>Clear all Message</button>
+      <button onClick={onClearMessage}>CLear</button>
     </div>
   );
 };

@@ -4,19 +4,19 @@ const initialState: ChatState = {
   message: []
 };
 
-function chatReducer(state = initialState, action: ChatActionTypes): ChatState {
-  switch (action.type) {
+function chatReducer(state = initialState, {type, payload}: ChatActionTypes): ChatState {
+  switch (type) {
     case SEND_MESSAGE: {
       return {
         ...state,
-        message: [...state.message, action.payload]
+        message: [...state.message, payload]
       };
     }
     case CLEAR_MESSAGE: {
-        return{
-            ...state,
-            message: []
-        }
+      return {
+        ...state,
+        message: []
+      }
     }
     default:
       return state;
